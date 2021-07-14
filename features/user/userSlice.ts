@@ -40,7 +40,7 @@ export const userSlice = createSlice({
         ).
         addCase(signupAsync.fulfilled, (state, action) => {
             state.status = ApiStatus.FULLFILLED;
-            state.user = action.payload.createUser;
+            state.user = action.payload;
         }               
     )
     }

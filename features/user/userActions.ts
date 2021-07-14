@@ -26,7 +26,7 @@ export const logoutAsync = createAsyncThunk('user/logoutAsync', async ({user}:an
 export const signupAsync = createAsyncThunk('user/signupAsync', async ({user}:any , thunkApi) => {
     const state: AppState = <AppState>thunkApi.getState();  
     const result =  await signUpApi(user);
-    return result;
+    return result.createUser?result.createUser: null;
 });
 
 

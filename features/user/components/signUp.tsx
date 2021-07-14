@@ -1,4 +1,4 @@
-import { Box, Button, Grid,Typography } from "@material-ui/core";
+import { Box, Button, Grid,Typography, Snackbar } from "@material-ui/core";
 import { useRouter } from "next/dist/client/router";
 import { useRef, useState } from "react";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
@@ -6,16 +6,24 @@ import { useHistory } from "react-router-dom";
 import { useAppDispatch } from "../../../app/hooks";
 import { loginAsync, signupAsync } from "../userActions";
 import { User } from "../userModels";
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 
 export interface ISignUpProps {
     onSwithToSignIn: () => void
 }
+
+function Alert(props: AlertProps) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 
 export function SignUp({onSwithToSignIn}: ISignUpProps) {
 
     const [fullname, setFullName] = useState(null);
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
+    const [error, setError]: any = useState("");
+    const [openErrorAlert, setOpenErrorAlert] = useState(false);
     const router = useRouter();
 
     const dispatch =  useAppDispatch();
@@ -29,13 +37,20 @@ export function SignUp({onSwithToSignIn}: ISignUpProps) {
         user.fullName = fullname;
         //let response = loginUser(user);
         dispatch(signupAsync({user: user})).then(response => {
-            if(response) {
+            
+            if(response?.payload?._id) {
                 router.push("/usertask")
             } else {
-
+                setError("Signup failed");     
+                setOpenErrorAlert(true);           
             }
         });
         
+    }
+
+    const handleErrorAlertClose = () => {
+        setOpenErrorAlert(false);
+        setError("");  
     }
 
     return (
@@ -43,7 +58,12 @@ export function SignUp({onSwithToSignIn}: ISignUpProps) {
                 ref={formRef}
                 onSubmit={handleSubmit}
                 onError={errors => console.log(errors)}>
-                
+                <Snackbar open={openErrorAlert} autoHideDuration={6000} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                    onClose={handleErrorAlertClose}>
+                    <Alert onClose={handleErrorAlertClose} severity="error">
+                        {error}
+                    </Alert>
+                </Snackbar>
                 <Grid container spacing={5} justifyContent="center" alignItems="center">
                     <Grid item>
                         <Typography variant="h6"><strong>Sign Up</strong></Typography>
