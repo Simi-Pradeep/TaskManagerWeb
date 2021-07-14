@@ -72,7 +72,7 @@ export function AddTask({open, bucketName}: IAddTaskProps) {
         newTask.title = title;
         newTask.description = description;
         newTask.scheduledDate = scheduledDate? convertDateToServerFormat(scheduledDate): null;
-        newTask.dueDate = convertDateToServerFormat(dueDate);
+        newTask.dueDate = dueDate? convertDateToServerFormat(dueDate): null;
         newTask.priority = priority;
         dispatch(addTaskAsync({task: newTask}));
         resetAllFields();
@@ -138,9 +138,7 @@ export function AddTask({open, bucketName}: IAddTaskProps) {
                     onChange={setDueDate}
                     name="dueDate"
                     value={dueDate}   
-                    minDate={new Date()}               
-                    validators={["required"]}
-                    errorMessages={["date is required"]}
+                    minDate={new Date()}
                     format="dd/MMM/yyyy"
                     /> 
                 </Grid>
