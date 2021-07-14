@@ -1,0 +1,46 @@
+.logoPanel {
+    background-color: hsl(214, 100%, 50%);
+    border-radius: 8px 0px 0px 8px;
+    position: relative;
+    z-index: 1;
+    min-height:175px;
+
+    @media(max-width: 960px) {
+        border-radius: 8px 8px 0px 0px;
+    }
+}
+
+.signInPanel {
+    min-height:350px;
+    background-color: white;
+    border-radius: 0px 8px 8px 0px;
+    z-index: 1;
+    @media(max-width: 960px) {
+        border-radius: 0px 0px 8px 8px;
+    }
+    @media(max-width: 600px) {
+        min-height:300px;
+    }
+
+    
+}
+
+.lottieContainer {
+    position: absolute;
+    width: 300px;
+    top: 0px;
+    left: 0px;
+    background-image: url('/NiraBG.png');
+    background-size: contain;
+    height: 400px;
+    background-repeat: no-repeat;
+}
+
+.taskImgContainer {
+    position: absolute;
+    width: 300px;
+    bottom:0px;
+    right: 100px;
+    opacity:0.5;
+
+}
