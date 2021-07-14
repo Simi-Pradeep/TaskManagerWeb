@@ -23,8 +23,8 @@ class MyDocument extends Document {
       <Html>
         <Head>
         <meta name="theme-color" content={theme.palette.primary.main} />
-        <link href="http://fonts.cdnfonts.com/css/yatra-one?styles=19715" rel="stylesheet"></link>
-        <link href="http://fonts.cdnfonts.com/css/montserrat" rel="stylesheet"></link>
+        <link href="https://fonts.cdnfonts.com/css/yatra-one?styles=19715" rel="stylesheet"></link>
+        <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet"></link>
         </Head>
         <body>
           <Main />
