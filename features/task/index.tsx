@@ -35,12 +35,13 @@ export function TaskHome() {
         segerateTasksToBuckets(taskMasterList);     
     },[taskMasterList])
 
-    function segerateTasksToBuckets(tasks: Task[]) {
-        if(isEmpty(tasks)) return;
-        const bucketList = new BucketList();
-        tasks.forEach(taskElement => {
-            bucketList[getBucketNameForTask(taskElement)].push(taskElement);
-        })
+    function segerateTasksToBuckets(tasks: Task[]) {        
+        const bucketList = new BucketList();    
+        if(tasks) {    
+            tasks.forEach(taskElement => {
+                bucketList[getBucketNameForTask(taskElement)].push(taskElement);
+            })
+        }
         setToBucket(bucketList);
     }
 
