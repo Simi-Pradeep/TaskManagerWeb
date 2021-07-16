@@ -1,15 +1,15 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import { useAppSelector } from "../../app/hooks";
-import { getBucketName, getBucketNameForTask } from "./taskUtil";
+import { useAppSelector } from "../../../../app/hooks";
+import { getBucketName, getBucketNameForTask } from "../../taskUtil";
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
-import { Task, BucketList, BucketName, IScheduledModalTaskInfo } from "./taskModels";
+import { Task, BucketList, BucketName, IScheduledModalTaskInfo } from "../../taskModels";
 import { useDispatch } from "react-redux";
-import { DragableTask} from "./components/dragabbleTask";
-import { getTodaysDateAsString, getTomorrowsDateAsString, isEmpty } from "../../app/util";
+import { DragableTask} from "../dragabbleTask";
+import { getTodaysDateAsString, getTomorrowsDateAsString, isEmpty } from "../../../../app/util";
 import { Box, Divider, Grid } from "@material-ui/core";
-import { fetchAllTasksAsync, modifyAndReOrderAsync } from "./taskActions";
-import { ScheduledDateModal } from './dialogs/scheduledDateModal';
-import { TaskLayout } from "./taskLayout";
+import { fetchAllTasksAsync, modifyAndReOrderAsync } from "../../taskActions";
+import { ScheduledDateModal } from '../../dialogs/scheduledDateModal';
+import { TaskLayout } from "../../taskLayout";
 
 const BucketTheme = {
     backlog: '#c0deff',
@@ -24,8 +24,6 @@ export function TaskHome() {
     const [openScheduledModal, setOpenScheduledModal] = useState(false);
     const taskMasterList = useAppSelector((state) => state.task?.tasks); 
     const dispatch = useDispatch();
-
-    const scheduledModalRef = useRef();
 
     useEffect(() => {
         dispatch(fetchAllTasksAsync())
@@ -172,10 +170,11 @@ export function TaskHome() {
                     </Grid>
                 </Grid>                
             </DragDropContext>
-
-            <ScheduledDateModal taskInfo={scheduledModalTaskInfo} open={openScheduledModal}
-              onDateSelection={onScheduledBucketDateSelection} 
-              onClose={resetScheduledModalInfo}></ScheduledDateModal>
+            {openScheduledModal && 
+                <ScheduledDateModal taskInfo={scheduledModalTaskInfo}
+                onDateSelection={onScheduledBucketDateSelection} 
+                onClose={resetScheduledModalInfo}></ScheduledDateModal>
+            }            
             </TaskLayout>
         );
     

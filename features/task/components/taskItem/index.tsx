@@ -2,9 +2,9 @@ import { Chip, createStyles, Grid, makeStyles, Theme, Tooltip } from "@material-
 import { Beenhere } from "@material-ui/icons";
 import { AppProps } from "next/dist/next-server/lib/router/router";
 import { useState } from "react";
-import { isOldDate } from "../../../app/util";
-import { CompleteTaskModal } from "../dialogs/completeTaskModal";
-import { Task, TaskStatus } from "../taskModels";
+import { isOldDate } from "../../../../app/util";
+import { CompleteTaskModal } from "../../dialogs/completeTaskModal";
+import { Task, TaskStatus } from "../../taskModels";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

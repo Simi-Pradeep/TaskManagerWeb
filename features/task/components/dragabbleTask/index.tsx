@@ -2,10 +2,10 @@ import { Box, Grid, IconButton, Paper } from '@material-ui/core';
 import { AddCircle, ArrowBackTwoTone, PlusOne, PlusOneRounded, SignalWifi1BarLockSharp } from '@material-ui/icons';
 import { useState } from 'react';
 import { DragDropContext, Droppable, Draggable, DragDropContextProps, DropResult } from 'react-beautiful-dnd';
-import { getRandomUUIDString } from '../../../app/util';
-import { AddTask } from '../dialogs/addTaskModal';
-import { Task, BucketList, BucketName, TaskPriority } from '../taskModels';
-import { TaskItem } from './taskItem';
+import { getRandomUUIDString } from '../../../../app/util';
+import { AddTask } from '../../dialogs/addTaskModal';
+import { Task, BucketList, BucketName, TaskPriority } from '../../taskModels';
+import { TaskItem } from '../taskItem';
 
 
 
@@ -24,22 +24,14 @@ const getItemStyle = (isDragging:any, draggableStyle:any, isDisabled = false, pr
     margin: `0 0 ${grid}px 0`,
     borderLeft: `3px solid ${priority?priorityColor[priority]:'transparent'}`,
 
-    // change background colour if dragging
-    //background: isDisabled?'lightgray':( isDragging ? 'lightgreen' : (priority?priorityColor[priority]:'white')),
-    //background: isDisabled?'lightgray':( isDragging ? 'lightgreen' :'white'),
     background: isDisabled?'lightgray':( isDragging ? `${priority?priorityColor[priority]:'white'}` :'white'),
-    //color: isDisabled? '#999999': 'black',
     color: isDisabled? '#999999': ( isDragging ? 'white': 'black'),
-    //color:'white',
-    // styles we need to apply on draggables
     ...draggableStyle
 });
 
 
 
 const getListStyle = (isDraggingOver:any, bgColor: string) => ({
-    //background: isDraggingOver ? 'lightblue' : '#eeeeee',//bgColor,//'white',
-    //background: isDraggingOver ? 'lightblue' : 'rgb(255 250 229)',
     background: isDraggingOver ? 'lightblue' : bgColor,//'white',    
     padding: grid,
     width: '100%'
@@ -122,7 +114,7 @@ export function DragableTask({droppableId, droppableList, nonDroppableList, disp
 
                 </div>
             }
-             </Box>            
+             </Box>          
            
             <AddTask bucketName={droppableId} open={openAddModal} ></AddTask>
         </div>
