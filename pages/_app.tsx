@@ -19,38 +19,38 @@ interface MyAppProps extends AppProps {}
 
 function MyApp({ Component, pageProps }: MyAppProps) {
 
- const getInitialProps = async ({ Component, ctx }: AppContext) => {
-    const pageProps = Component.getInitialProps
-      ? await Component.getInitialProps(ctx)
-      : {};
+    const getInitialProps = async ({ Component, ctx }: AppContext) => {
+        const pageProps = Component.getInitialProps
+            ? await Component.getInitialProps(ctx)
+            : {};
 
-    return { pageProps };
-  }
-
-  //const store = useStore();
-
-  useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side');
-    if (jssStyles && jssStyles.parentElement) {
-      jssStyles.parentElement.removeChild(jssStyles);
+        return { pageProps };
     }
-  }, []);
 
-  return( 
-    <>
+    //const store = useStore();
+
+    useEffect(() => {
+    // Remove the server-side injected CSS.
+        const jssStyles = document.querySelector('#jss-server-side');
+        if (jssStyles && jssStyles.parentElement) {
+            jssStyles.parentElement.removeChild(jssStyles);
+        }
+    }, []);
+
+    return( 
+        <>
      
-     <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            {/* <PersistGate persistor={persistStore(store)} loading={<div>Loading</div>}> */}
-              <Component {...pageProps} />
-            {/* </PersistGate> */}
-        </MuiPickersUtilsProvider>
-      </ThemeProvider>
-    </>
-  )
+            <ThemeProvider theme={theme}>
+                {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+                <CssBaseline />
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    {/* <PersistGate persistor={persistStore(store)} loading={<div>Loading</div>}> */}
+                    <Component {...pageProps} />
+                    {/* </PersistGate> */}
+                </MuiPickersUtilsProvider>
+            </ThemeProvider>
+        </>
+    )
 }
 
 

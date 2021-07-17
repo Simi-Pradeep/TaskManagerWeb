@@ -1,10 +1,9 @@
+import Cookies from "js-cookie";
+import { User } from "./userModels";
+const USER_COOKIE_KEY = "userSession";
 
-import Cookies from 'js-cookie'
-import { User } from './userModels';
-const USER_COOKIE_KEY = 'userSession';
-
-export function addUserInfoToCookie(user:User) {
-    Cookies.set(USER_COOKIE_KEY, JSON.stringify(user) );
+export function addUserInfoToCookie(user: User) {
+    Cookies.set(USER_COOKIE_KEY, JSON.stringify(user));
 }
 
 export function removeUserInfoFromCookie() {
@@ -12,8 +11,5 @@ export function removeUserInfoFromCookie() {
 }
 
 export function isAthourized() {
-    return Cookies.get(USER_COOKIE_KEY)? true: false;
+    return Cookies.get(USER_COOKIE_KEY) ? true : false;
 }
-
-
-

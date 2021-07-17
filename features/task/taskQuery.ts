@@ -1,4 +1,4 @@
-export const fetchAllTasksForUserQuery= `
+export const fetchAllTasksForUserQuery = `
         query getUser($userId: ID!) {
             user(id:$userId) {
                 tasks {
@@ -13,9 +13,9 @@ export const fetchAllTasksForUserQuery= `
                     completionMarkedDate
                 }
             }
-        }`
+        }`;
 
-export const modifyTaskForUserMutation= `
+export const modifyTaskForUserMutation = `
     mutation modifyTask($userId:ID!,$task: TaskInput!, $taskIndex: Int!) {
         modifyTask(userId:$userId, task: $task, taskIndex: $taskIndex) {                
                 _id
@@ -28,9 +28,9 @@ export const modifyTaskForUserMutation= `
                 completedDate
                 completionMarkedDate     
             }
-        }`
+        }`;
 
-export const addTaskForUserMutation= `
+export const addTaskForUserMutation = `
 mutation addTask($userId:ID!,$task: TaskInput!, $taskIndex: Int) {
     addTask(userId:$userId, task: $task, taskIndex: $taskIndex) {                
             _id
@@ -43,9 +43,9 @@ mutation addTask($userId:ID!,$task: TaskInput!, $taskIndex: Int) {
             completedDate
             completionMarkedDate             
         }
-    }`
+    }`;
 
-export const reOrderTaskForUserMutation= `
+export const reOrderTaskForUserMutation = `
         mutation reOrderTask($userId:ID!, $newTaskIndex: Int!, $currentTaskIndex: Int!) {
             reOrderTask(userId:$userId, newTaskIndex: $newTaskIndex, currentTaskIndex: $currentTaskIndex) {                
                     _id
@@ -58,10 +58,10 @@ export const reOrderTaskForUserMutation= `
                     completedDate
                     completionMarkedDate            
                 }
-            }`
+            }`;
 
-export const fetchAllUsersQuery= `{
+export const fetchAllUsersQuery = `{
     users {
         _id
     }
-}`
+}`;

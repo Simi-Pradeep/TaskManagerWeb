@@ -6,7 +6,7 @@ export class User {
 }
 
 export interface UserInput {
-    username: string | null,
-    password: string | null,
-    fullName?: string | null
+    username: string | null;
+    password: string | null;
+    fullName?: string | null;
 }

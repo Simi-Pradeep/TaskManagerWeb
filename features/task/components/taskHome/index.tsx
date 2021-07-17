@@ -9,7 +9,7 @@ import { getTodaysDateAsString, getTomorrowsDateAsString, isEmpty } from "../../
 import { Box, Divider, Grid } from "@material-ui/core";
 import { fetchAllTasksAsync, modifyAndReOrderAsync } from "../../taskActions";
 import { ScheduledDateModal } from '../../dialogs/scheduledDateModal';
-import { TaskLayout } from "../../taskLayout";
+import { TaskLayout } from "../taskLayout";
 
 const BucketTheme = {
     backlog: '#c0deff',
@@ -145,36 +145,36 @@ export function TaskHome() {
                     <Grid item xs={8}>My Tasks</Grid>
                 </Grid>
                 <Divider style={{margin:'10px 0px 20px 0px'}}></Divider>
-            <DragDropContext onDragEnd={onDragEnd}>
-                <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6} md={3}>
-                        <DragableTask droppableId={BucketName.BACKLOG} 
-                        droppableList={buckets[BucketName.BACKLOG]} 
-                        displayLabel='Backlog' bgColor={BucketTheme.backlog}></DragableTask>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                        <DragableTask droppableId={BucketName.TODAY} 
-                        droppableList={buckets[BucketName.TODAY]} 
-                        nonDroppableList={buckets[BucketName.COMPLETED]} 
-                        displayLabel='Today' bgColor={BucketTheme.today}></DragableTask>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                        <DragableTask droppableId={BucketName.TOMORROW} 
-                        droppableList={buckets[BucketName.TOMORROW]} 
-                        displayLabel='Tomorrow' bgColor={BucketTheme.tomorrow}></DragableTask>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                        <DragableTask droppableId={BucketName.SCEDULED} 
-                        droppableList={buckets[BucketName.SCEDULED]} 
-                        displayLabel='Scheduled' bgColor={BucketTheme.scheduled}></DragableTask>
-                    </Grid>
-                </Grid>                
-            </DragDropContext>
-            {openScheduledModal && 
-                <ScheduledDateModal taskInfo={scheduledModalTaskInfo}
-                onDateSelection={onScheduledBucketDateSelection} 
-                onClose={resetScheduledModalInfo}></ScheduledDateModal>
-            }            
+                <DragDropContext onDragEnd={onDragEnd}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={6} md={3}>
+                            <DragableTask droppableId={BucketName.BACKLOG} 
+                            droppableList={buckets[BucketName.BACKLOG]} 
+                            displayLabel='Backlog' bgColor={BucketTheme.backlog}></DragableTask>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={3}>
+                            <DragableTask droppableId={BucketName.TODAY} 
+                            droppableList={buckets[BucketName.TODAY]} 
+                            nonDroppableList={buckets[BucketName.COMPLETED]} 
+                            displayLabel='Today' bgColor={BucketTheme.today}></DragableTask>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={3}>
+                            <DragableTask droppableId={BucketName.TOMORROW} 
+                            droppableList={buckets[BucketName.TOMORROW]} 
+                            displayLabel='Tomorrow' bgColor={BucketTheme.tomorrow}></DragableTask>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={3}>
+                            <DragableTask droppableId={BucketName.SCEDULED} 
+                            droppableList={buckets[BucketName.SCEDULED]} 
+                            displayLabel='Scheduled' bgColor={BucketTheme.scheduled}></DragableTask>
+                        </Grid>
+                    </Grid>                
+                </DragDropContext>
+                {openScheduledModal && 
+                    <ScheduledDateModal taskInfo={scheduledModalTaskInfo}
+                    onDateSelection={onScheduledBucketDateSelection} 
+                    onClose={resetScheduledModalInfo}></ScheduledDateModal>
+                }            
             </TaskLayout>
         );
     

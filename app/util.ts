@@ -1,28 +1,38 @@
-import { add, format, isBefore, isEqual, isPast, isSameDay, parse, sub } from "date-fns";
+import {
+    add,
+    format,
+    isBefore,
+    isEqual,
+    isPast,
+    isSameDay,
+    parse,
+    sub,
+} from "date-fns";
 import { DATE_FORMAT_DD_MM_YYYY, DATE_FORMAT_YYYY_MM_DD } from "./constants";
-import * as uuid from 'uuid';
+import * as uuid from "uuid";
 
-export function isEmpty(value:any | Array<any> | null | undefined): boolean {
-    if(!value) return true;
-    if(Array.isArray(value)) return value.length > 0 ? false: true;
+export function isEmpty(value: any | Array<any> | null | undefined): boolean {
+    if (!value) return true;
+    if (Array.isArray(value)) return value.length > 0 ? false : true;
     return false;
 }
 
-
-export function isNotEmpty(value:any | Array<any> | null | undefined): boolean {
-    if(!value) return false;
-    if(Array.isArray(value)) return value.length > 0 ? true: false;
+export function isNotEmpty(
+    value: any | Array<any> | null | undefined
+): boolean {
+    if (!value) return false;
+    if (Array.isArray(value)) return value.length > 0 ? true : false;
     return true;
 }
 
 export function parseDate(dateVal: Date) {
     let newDate = new Date();
-    console.log("Date ------------------->>>",format(dateVal, 'dd-MM-yyy'));
-    return parse(format(dateVal, 'dd-MM-yyy'), 'dd-MM-yyyy', newDate);
+    console.log("Date ------------------->>>", format(dateVal, "dd-MM-yyy"));
+    return parse(format(dateVal, "dd-MM-yyy"), "dd-MM-yyyy", newDate);
 }
 
 export function convertDateToServerFormat(dateVal: Date) {
-    return format(dateVal, DATE_FORMAT_YYYY_MM_DD) 
+    return format(dateVal, DATE_FORMAT_YYYY_MM_DD);
 }
 
 export function getTodaysDateAsString() {
@@ -38,20 +48,20 @@ export function getTodaysDate() {
 }
 
 export function getYesterdaysDate() {
-    return sub(new Date(),{days: 1});
+    return sub(new Date(), { days: 1 });
 }
 
 export function getTomorrowDate() {
-    return add(new Date(),{days: 1}); 
+    return add(new Date(), { days: 1 });
 }
 
 export function getDateAfterTomorrowDate() {
-    return add(new Date(),{days: 2}); 
+    return add(new Date(), { days: 2 });
 }
 
 export function getStringAsDate(dateVal: string) {
     const newDate: Date = new Date();
-    return parse(dateVal, DATE_FORMAT_YYYY_MM_DD, newDate); 
+    return parse(dateVal, DATE_FORMAT_YYYY_MM_DD, newDate);
     //return newDate;
 }
 
@@ -62,7 +72,10 @@ export function isToday(dateVal: string) {
 
 export function isOldDate(dateVal: string) {
     //return isPast(getStringAsDate(dateVal));
-    return isBefore(getStringAsDate(dateVal), getStringAsDate(getTodaysDateAsString()));
+    return isBefore(
+        getStringAsDate(dateVal),
+        getStringAsDate(getTodaysDateAsString())
+    );
 }
 
 export function isTomorrow(dateVal: string) {

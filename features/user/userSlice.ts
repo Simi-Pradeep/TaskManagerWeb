@@ -11,39 +11,37 @@ interface IUserState {
 
 const initialState: IUserState = {
     user: null,
-    status: ApiStatus.IDLE
-}
+    status: ApiStatus.IDLE,
+};
 
 export const userSlice = createSlice({
-    name: 'user',
+    name: "user",
     initialState,
     reducers: {
-    
         logoutUser: (state) => {
             state.user = null;
-        }
+        },
     },
     extraReducers: (builder) => {
-        builder.addCase(HYDRATE, (state, action) => {
-            return {...state, ...action}
-        }).
-        addCase(loginAsync.pending, (state, action) => {
-            state.status = ApiStatus.LOADING;
-        }).
-        addCase(signupAsync.pending, (state, action) => {
-            state.status = ApiStatus.LOADING;
-        }).
-        addCase(loginAsync.fulfilled, (state, action) => {
-                state.status = ApiStatus.FULLFILLED;                
+        builder
+            .addCase(HYDRATE, (state, action) => {
+                return { ...state, ...action };
+            })
+            .addCase(loginAsync.pending, (state, action) => {
+                state.status = ApiStatus.LOADING;
+            })
+            .addCase(signupAsync.pending, (state, action) => {
+                state.status = ApiStatus.LOADING;
+            })
+            .addCase(loginAsync.fulfilled, (state, action) => {
+                state.status = ApiStatus.FULLFILLED;
                 state.user = action.payload;
-            }               
-        ).
-        addCase(signupAsync.fulfilled, (state, action) => {
-            state.status = ApiStatus.FULLFILLED;
-            state.user = action.payload;
-        }               
-    )
-    }
-})
+            })
+            .addCase(signupAsync.fulfilled, (state, action) => {
+                state.status = ApiStatus.FULLFILLED;
+                state.user = action.payload;
+            });
+    },
+});
 
-export const {logoutUser} = userSlice.actions;
+export const { logoutUser } = userSlice.actions;
