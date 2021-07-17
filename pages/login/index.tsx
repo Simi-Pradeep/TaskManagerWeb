@@ -2,8 +2,8 @@ import { Box, Grid, Paper } from "@material-ui/core";
 import { useState } from "react";
 import { SignIn } from "../../features/user/components/signIn";
 import { SignUp } from "../../features/user/components/signUp";
-import mainPageStyles from '../../styles/Home.module.css'
-import loginStyles from './Login.module.scss'
+import mainPageStyles from "../../styles/Home.module.css";
+import loginStyles from "./Login.module.scss";
 import { useLottie } from "lottie-react";
 import Image from "next/image";
 import niraLogo from "../../public/nira.svg";
@@ -13,15 +13,15 @@ import topBgImg from "../../public/bg.png";
 
 export default function LoginPage() {
     const [isSignInPage, setIsSignInPage] = useState(true);
-    
+
     // const options = {
     //   animationData: groovyWalkAnimation,
     //   loop: true,
     //   autoplay: true,
     // };
-       
+
     // const { View } = useLottie(options);
-    return(
+    return (
         <div className={mainPageStyles.container}>
             {/* <div className={loginStyles.lottieContainer}>
                  {View}
@@ -29,38 +29,76 @@ export default function LoginPage() {
             <div className={loginStyles.lottieContainer}>
                 {/* <img src='./bg.png' ></img>  */}
                 {/* <Image src={topBgImg} ></Image>   */}
-                
             </div>
             <div className={loginStyles.taskImgContainer}>
-            
-                <Image src={taskImg} ></Image>
+                <Image src={taskImg}></Image>
                 {/* <img src='./task.svg' style={{width:'300px'}}></img> */}
             </div>
-            <Box boxShadow={3} borderRadius='10px' width='700px' maxWidth='80vw'>
-                <Grid container >
-                    <Grid container item xs={12} sm={6} className={loginStyles.logoPanel}>
-                        <Box position="absolute"
-                            style={{backgroundImage:"url('./niraloginbg.svg')", opacity:'0.2', backgroundSize:'contain'}} 
-                            width="100%" height="100%"></Box>
-                        <Box m='auto' textAlign='center' color="white">
+            <Box
+                boxShadow={3}
+                borderRadius="10px"
+                width="700px"
+                maxWidth="80vw"
+            >
+                <Grid container>
+                    <Grid
+                        container
+                        item
+                        xs={12}
+                        sm={6}
+                        className={loginStyles.logoPanel}
+                    >
+                        <Box
+                            position="absolute"
+                            style={{
+                                backgroundImage: "url('./niraloginbg.svg')",
+                                opacity: "0.2",
+                                backgroundSize: "contain",
+                            }}
+                            width="100%"
+                            height="100%"
+                        ></Box>
+                        <Box m="auto" textAlign="center" color="white">
                             <Image src={niraLogo}></Image>
-                            <br></br> 
-                            <div style={{fontSize:'20px'}}>Task Manager</div>
-                            <div>Your one stop solution for task management</div>
+                            <br></br>
+                            <div style={{ fontSize: "20px" }}>Task Manager</div>
+                            <div>
+                                Your one stop solution for task management
+                            </div>
                         </Box>
                     </Grid>
-                    <Grid container item xs={12} sm={6} className={loginStyles.signInPanel}>
-                        <Box m="auto" height="100%" display="flex" alignItems="center" justifyContent="center">
-                            {isSignInPage &&
-                            <SignIn onSwithToSignUp={() => setIsSignInPage(false)}></SignIn>
-                            }
-                            {!isSignInPage &&
-                            <SignUp onSwithToSignIn={() => setIsSignInPage(true)}></SignUp>
-                            }
+                    <Grid
+                        container
+                        item
+                        xs={12}
+                        sm={6}
+                        className={loginStyles.signInPanel}
+                    >
+                        <Box
+                            m="auto"
+                            height="100%"
+                            display="flex"
+                            alignItems="center"
+                            justifyContent="center"
+                        >
+                            {isSignInPage && (
+                                <SignIn
+                                    onSwithToSignUp={() =>
+                                        setIsSignInPage(false)
+                                    }
+                                ></SignIn>
+                            )}
+                            {!isSignInPage && (
+                                <SignUp
+                                    onSwithToSignIn={() =>
+                                        setIsSignInPage(true)
+                                    }
+                                ></SignUp>
+                            )}
                         </Box>
                     </Grid>
-                </Grid>            
+                </Grid>
             </Box>
         </div>
-    ) 
+    );
 }
