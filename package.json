@@ -9,6 +9,11 @@
     "lint": "next lint --fix",
     "prettier-format": "prettier --config .prettierrc **/*.ts --write"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier-format && npm run lint"
+    }
+  },
   "dependencies": {
     "@babel/core": "^7.14.6",
     "@babel/plugin-proposal-decorators": "^7.14.5",
@@ -53,6 +58,7 @@
     "eslint-config-next": "11.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^7.0.1",
     "prettier": "^2.3.2",
     "typescript": "4.3.5"
   }
