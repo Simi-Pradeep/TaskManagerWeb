@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    GRAPHQL_API_URL:'http://18.234.184.194:3001/graphql'    
+    GRAPHQL_API_URL:'https://nira.simipradeep.com/graphql'    
   }
 }
