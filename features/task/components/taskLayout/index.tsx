@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
     drawerLogo: {
         position:'absolute',
-        top: '10px',
+        top: '5px',
         left:'15px'
     },
     drawerClose: {
@@ -138,7 +138,7 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
         fontFamily: 'Yatra One',
         color:'black',
-        top: '-10px',
+        top: '-4px',
         position: 'relative',
         fontSize:'20px'
     }
@@ -187,8 +187,9 @@ export function TaskLayout(props: any) {
                 {(open || mobileOpen) && 
                     <>
                         <Box className={classes.drawerLogo}>
-                            <img src='/nira.svg'/><br></br>
-                            <span style={{fontSize:'14px'}}>Task Manager</span>
+                            {/* <img src='/nira.svg'/><br></br> */}
+                            <div style={{fontSize: '40px', fontWeight:'bold'}}>sims</div>
+                            <span style={{fontSize:'14px', position:'relative', top:'-10px'}}>Task Manager</span>
                             </Box>
                         <IconButton onClick={handleDrawerClose}>
                             <ArrowLeft />
@@ -272,7 +273,17 @@ export function TaskLayout(props: any) {
                             <Hidden smUp>               
                                 <Menu onClick={handleDrawerToggle} style={{color:'black', position:'relative', top:'-10px'}}></Menu>
                             </Hidden>  
-                            &nbsp;<img src='/niraLogo.png' style={{width:'35px', height:'35px'}}></img>
+                            &nbsp;
+                            {/* <img src='/niraLogo.png' style={{width:'35px', height:'35px'}}></img> */}
+                            <span style={{display: "inline-block",
+                                    width: '35px',
+                                    height: '35px',
+                                    backgroundColor: 'black',
+                                    lineHeight: '34px',
+                                    textAlign: 'center',
+                                    borderRadius: '50%',
+                                    fontWeight: 'bold',
+                                    fontSize: '30px'}}>s</span>
                             &nbsp;<span className={classes.title}>&nbsp;ToDo List</span>
                     </Grid>
                     <Grid item xs={4} style={{textAlign: 'right',

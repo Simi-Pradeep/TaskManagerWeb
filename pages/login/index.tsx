@@ -14,21 +14,10 @@ import topBgImg from "../../public/bg.png";
 export default function LoginPage() {
     const [isSignInPage, setIsSignInPage] = useState(true);
 
-    // const options = {
-    //   animationData: groovyWalkAnimation,
-    //   loop: true,
-    //   autoplay: true,
-    // };
-
-    // const { View } = useLottie(options);
     return (
         <div className={mainPageStyles.container}>
-            {/* <div className={loginStyles.lottieContainer}>
-                 {View}
-            </div> */}
+            
             <div className={loginStyles.lottieContainer}>
-                {/* <img src='./bg.png' ></img>  */}
-                {/* <Image src={topBgImg} ></Image>   */}
             </div>
             <div className={loginStyles.taskImgContainer}>
                 <Image src={taskImg}></Image>
@@ -59,8 +48,9 @@ export default function LoginPage() {
                             height="100%"
                         ></Box>
                         <Box m="auto" textAlign="center" color="white">
-                            <Image src={niraLogo}></Image>
-                            <br></br>
+                            {/* <Image src={niraLogo}></Image>
+                            <br></br> */}
+                            <div style={{fontSize: "48px",fontWeight: 'bold'}}>sims</div>
                             <div style={{ fontSize: "20px" }}>Task Manager</div>
                             <div>
                                 Your one stop solution for task management
