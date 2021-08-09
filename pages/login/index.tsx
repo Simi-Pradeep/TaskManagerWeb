@@ -16,9 +16,7 @@ export default function LoginPage() {
 
     return (
         <div className={mainPageStyles.container}>
-            
-            <div className={loginStyles.lottieContainer}>
-            </div>
+            <div className={loginStyles.lottieContainer}></div>
             <div className={loginStyles.taskImgContainer}>
                 <Image src={taskImg}></Image>
                 {/* <img src='./task.svg' style={{width:'300px'}}></img> */}
@@ -50,7 +48,11 @@ export default function LoginPage() {
                         <Box m="auto" textAlign="center" color="white">
                             {/* <Image src={niraLogo}></Image>
                             <br></br> */}
-                            <div style={{fontSize: "48px",fontWeight: 'bold'}}>sims</div>
+                            <div
+                                style={{ fontSize: "48px", fontWeight: "bold" }}
+                            >
+                                sims
+                            </div>
                             <div style={{ fontSize: "20px" }}>Task Manager</div>
                             <div>
                                 Your one stop solution for task management
